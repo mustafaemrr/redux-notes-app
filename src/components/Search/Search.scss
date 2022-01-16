@@ -1,5 +1,7 @@
 .search {
+  @apply w-full;
+
   &__input {
-    @apply bg-transparent w-96 p-0;
+    @apply w-full bg-transparent p-0 placeholder-amber-400 outline-none;
   }
 }
