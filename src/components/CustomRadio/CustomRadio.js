@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './CustomRadio.scss';
 
-function CustomRadio() {
+function CustomRadio({color, id}) {
+  const [noteColor, setNoteColor] = useState([]);
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    
+    setNoteColor({
+        [name]: value
+    })
+  }
+
   return (
     <>
-    <input id="radio1" type="radio" name="radio" className="hidden" />
-    <label htmlFor='radio1' className="flex items-center cursor-pointer text-xl">
-     <span className="w-8 h-8 inline-block mr-2 rounded-full border border-grey flex-no-shrink"></span>
-      Text
-     </label>
+      <input id={id} type="radio" name="color" value={color} className="hidden" onChange={handleChange} />
+      <label htmlFor={id} className="">
+        <span className={color}></span>
+      </label>
     </>
   )
 }

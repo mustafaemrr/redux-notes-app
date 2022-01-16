@@ -1,18 +1,44 @@
-input[type="radio"] + label span {
-  transition: background .2s,
-    transform .2s;
+input[type="radio"]:checked + label {
+  span {
+    &:after {
+      content: '';
+      background-image: url('/assets/img/check.svg');
+      width: 17px;
+      height: 17px;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      position: absolute;
+    }
+  }
 }
 
-input[type="radio"] + label span:hover,
-input[type="radio"] + label:hover span{
-transform: scale(1.2);
-} 
+label {
+  @apply flex items-center justify-center cursor-pointer p-0.5 border rounded-full mx-0.5;
 
-input[type="radio"]:checked + label span {
-background-color: #3490DC; //bg-blue
-box-shadow: 0px 0px 0px 2px white inset;
-}
-
-input[type="radio"]:checked + label{
- color: #3490DC; //text-blue
+  span {
+    @apply w-6 h-6 rounded-full flex-shrink-0 relative;
+    
+    &.blue {
+      @apply bg-sky-400;
+    }
+  
+    &.pink {
+      @apply bg-pink-500;
+    }
+  
+    &.yellow {
+      @apply bg-amber-400;
+    }
+  
+    &.purple {
+      @apply bg-purple-500;
+    }
+  
+    &.green {
+      @apply bg-green-500;
+    }
+  }
 }
