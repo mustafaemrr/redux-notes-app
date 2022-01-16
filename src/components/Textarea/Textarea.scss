@@ -1,5 +1,5 @@
 .textarea {
   textarea {
-    @apply w-96 h-40 resize-none;
+    @apply w-full h-32 resize-none outline-none text-gray-500 mb-4;
   }
 }
