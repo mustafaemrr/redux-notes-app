@@ -1,0 +1,30 @@
+.card {
+  @apply h-72	bg-white rounded-2xl shadow-md border border-dashed relative p-4 overflow-hidden;
+  @apply before:w-full before:h-4 before:left-0 before:bottom-0 before:absolute before:bg-black before:rounded-b-2xl;
+
+
+  &.blue {
+    @apply border-sky-400;
+    @apply before:bg-sky-400;
+  }
+
+  &.pink {
+    @apply border-pink-500;
+    @apply before:bg-pink-500;
+  }
+
+  &.yellow {
+    @apply border-amber-400;
+    @apply before:bg-amber-400;
+  }
+
+  &.purple {
+    @apply border-purple-500;
+    @apply before:bg-purple-500;
+  }
+
+  &.green {
+    @apply border-green-500;
+    @apply before:bg-green-500;
+  }
+}
