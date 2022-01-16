@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './CustomRadio.scss';
+import { useDispatch } from 'react-redux';
+import { addColor } from '../../redux/slice/notesSlice';
 
 function CustomRadio({color, id}) {
-  const [noteColor, setNoteColor] = useState([]);
+  const [noteColor, setNoteColor] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(addColor(noteColor))
+  }, [noteColor]);
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     
-    setNoteColor({
-        [name]: value
-    })
+    setNoteColor(value)
   }
 
   return (
