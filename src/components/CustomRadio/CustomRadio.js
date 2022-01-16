@@ -9,7 +9,7 @@ function CustomRadio({color, id}) {
 
   useEffect(() => {
     dispatch(addColor(noteColor))
-  }, [noteColor]);
+  }, [dispatch, noteColor]);
 
   const handleChange = e => {
     const { value } = e.target;

@@ -10,7 +10,7 @@ function Textarea() {
 
   useEffect(() => {
     dispatch(addDescription(description))
-  }, [description]);
+  }, [dispatch, description]);
 
   return (
     <div className='textarea'>
