@@ -14,7 +14,7 @@ function Search() {
 
   useEffect(() => {
     dispatch(filter(filterKey))
-  }, [filterKey])
+  }, [dispatch, filterKey])
 
 
   return (
