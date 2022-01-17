@@ -8,15 +8,22 @@ import { addTodo } from '../../redux/slice/notesSlice';
 
 function Form() {
   const items = useSelector((state) => state.notes.items);
-  const color = useSelector((state) => state.notes.color);
-  const description = useSelector((state) => state.notes.description);
-
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    if( color && description ) {
-      dispatch(addTodo());
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let color = e.target.elements.color.value;
+    let description = e.target.elements.textarea.value;
+    
+    if ( color && description ) {
+      dispatch(addTodo({
+        color: color, 
+        description: description
+      }))
     }
+
+    color = '';
+    description = '';
   }
   
   return (
@@ -29,7 +36,7 @@ function Form() {
         uygulaması
       </blockquote>
       
-      <div className="form__group">
+      <form className="form__group" onSubmit={handleSubmit}>
         <Textarea />
 
         <div className="form__button-group">
@@ -41,19 +48,20 @@ function Form() {
           <CustomRadio id='type-5' color='green' />
           </div>
           <div className="">
-            <button className='form__add-button' onClick={handleClick}>Ekle
+            <button className='form__add-button' type='submit'>Ekle
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
             </button>
           </div>
         </div>
-      </div>
+      </form>
+
       <Search />
       <div className="form__card-list">
         {
           items.map((item) => (
-            <Card key={item.id} id={item.id} description={item.description} color={item.color} />
+            <Card key={item.id} description={item.description} color={item.color} />
           ))
         }
       </div>
