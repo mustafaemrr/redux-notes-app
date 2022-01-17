@@ -4,6 +4,7 @@ export const notesSlice = createSlice({
   name: 'notes',
   initialState: {
     items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [],
+    filterKey: 'all'
   },
   reducers: {
     addTodo: {
@@ -20,9 +21,22 @@ export const notesSlice = createSlice({
           }
         }
       }
+    },
+    filter: {
+      reducer: (state, action) => {
+        state.filterKey = action.payload;
+      }
     }
   }
 })
 
-export const { addDescription, addColor, addTodo } = notesSlice.actions;
+export const selectTodosFiltered = (state) => {
+  if (state.notes.filterKey === 'all') {
+    return state.notes.items;
+  } 
+
+  return state.notes.items.filter((note) => 
+    note.description.toLowerCase().includes(state.notes.filterKey.toLowerCase()));
+}
+export const { addTodo, filter } = notesSlice.actions;
 export default notesSlice.reducer;
