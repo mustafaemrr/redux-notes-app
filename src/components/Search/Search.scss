@@ -1,7 +1,7 @@
 .search {
-  @apply w-full;
+  @apply w-full rounded-xl shadow-md border border-dashed border-amber-400 p-2 mb-4;
 
   &__input {
-    @apply w-full bg-transparent p-0 placeholder-amber-400 outline-none;
+    @apply w-full bg-transparent p-0 placeholder-amber-400 outline-none text-amber-400;
   }
 }
