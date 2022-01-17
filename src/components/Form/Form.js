@@ -4,10 +4,10 @@ import Textarea from '../Textarea';
 import CustomRadio from '../CustomRadio/';
 import Card from '../Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../../redux/slice/notesSlice';
+import { addTodo, selectTodosFiltered } from '../../redux/slice/notesSlice';
 
 function Form() {
-  const items = useSelector((state) => state.notes.items);
+  const filteredTodos = useSelector(selectTodosFiltered);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -60,7 +60,7 @@ function Form() {
       <Search />
       <div className="form__card-list">
         {
-          items.map((item) => (
+          filteredTodos.map((item) => (
             <Card key={item.id} description={item.description} color={item.color} />
           ))
         }
